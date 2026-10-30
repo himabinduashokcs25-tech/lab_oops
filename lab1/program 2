@@ -1,0 +1,44 @@
+abstract class Energysource {
+int id;
+String name;
+double energy;
+Energysource(int i, String n, double e) {
+id = i;
+name = n;
+energy = e;
+}
+abstract double efficiency();
+void display() {
+System.out.println("ID =" + id);
+System.out.println("Name=" + name);
+System.out.println("Energy =" + energy);
+System.out.println("Efficiency =" + efficiency());
+    }
+}
+
+class solar extends Energysource {
+    solar(int i, String n, double e) {
+        super(i, n, e);
+    }
+    double efficiency() {
+        return energy / 5000 * 100;
+    }
+}
+
+class wind extends Energysource {
+    wind(int i, String n, double e) {
+        super(i, n, e);
+    }
+    double efficiency() {
+        return energy / 8000 * 100;
+    }
+}
+
+class main {
+    public static void main(String[] args) {
+        Energysource s = new solar(1, "solar", 4000);
+        Energysource w = new wind(2, "wind", 9000);
+        s.display();
+        w.display();
+    }
+}
